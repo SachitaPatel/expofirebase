@@ -42,6 +42,7 @@ function HomeScreen({ navigation }) {
           <Card.Content>
             <Title>{item.title}</Title>
             <Paragraph>{item.full_description}</Paragraph>
+            <Paragraph>Cost: ${item.cost} &nbsp; Location: {item.location} &nbsp; Event Date: {item.event_date}</Paragraph>
           </Card.Content>
           <Card.Cover source={{ uri: item.featured_image }} />
           <Card.Actions>
@@ -92,7 +93,10 @@ function DetailsScreen({ route, navigation }) {
       title: item.title,
       meta_description: item.meta_description,
       full_description: item.full_description,
-      featured_image: item.featured_image
+      featured_image: item.featured_image,
+      location: item.location,
+      cost: item.cost,
+      event_date: item.event_date
     },
 
     mode: 'onChange',
@@ -184,7 +188,63 @@ function DetailsScreen({ route, navigation }) {
                 autoCapitalize: 'none',
               },
             },
+            {
+              type: 'input',
 
+              name: 'location',
+
+              label: 'Location',
+
+              rules: {
+                required: {
+                  value: false,
+                },
+              },
+
+              textInputProps: {
+                keyboardType: 'default',
+
+                autoCapitalize: 'none',
+              },
+            },
+            {
+              type: 'input',
+
+              name: 'cost',
+
+              label: 'Cost',
+
+              rules: {
+                required: {
+                  value: false,
+                },
+              },
+
+              textInputProps: {
+                keyboardType: 'default',
+
+                autoCapitalize: 'none',
+            },
+          },
+          {
+            type: 'date',
+
+            name: 'event_date',
+
+            label: 'Event Date',
+
+            rules: {
+              required: {
+                value: false,
+              },
+            },
+
+            textInputProps: {
+              keyboardType: 'default',
+
+              autoCapitalize: 'none',
+          },
+        },
           ]}>
           <Button
             mode={'contained'}
